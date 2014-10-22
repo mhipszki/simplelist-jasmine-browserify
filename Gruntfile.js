@@ -4,8 +4,8 @@ module.exports = function(grunt) {
 
   var files = {
     source: 'source/*.js',
-    tests: 'test/*.spec.js',
-    fixtures: 'test/fixture/*.html',
+    tests: 'test/**/*.js',
+    templates: 'test/fixture/*.html',
     grunt: 'Gruntfile.js'
   };
 
@@ -21,11 +21,15 @@ module.exports = function(grunt) {
     watch: {
       source: {
         files: [files.source],
-        tasks: ['test']
+        tasks: ['newer:jshint:source', 'browserify', 'jasmine']
       },
       tests: {
-        files: [files.tests, files.fixtures],
-        tasks: ['test']
+        files: [files.tests],
+        tasks: ['newer:jshint:tests', 'browserify', 'jasmine']
+      },
+      templates: {
+        files: [files.templates],
+        tasks: ['copy:templates', 'jasmine']
       },
       grunt: {
         files: [files.grunt],
@@ -43,15 +47,32 @@ module.exports = function(grunt) {
       grunt: [files.grunt]
     },
 
+    browserify: {
+      source: {
+        src: ['source/*.js'],
+        dest: 'build/source.js'
+      },
+      tests: {
+        src: ['test/*.spec.js'],
+        dest: 'build/tests.js',
+        options: {
+          external: ['./source/app.js'],
+          debug: true
+        }
+      }
+    },
+
     jasmine: {
       test: {
-        src: 'source/*.js',
+        src: 'build/source.js',
         options: {
+          keepRunner: true,
           vendor: [
             'bower_components/jquery/dist/jquery.js',
             'bower_components/jasmine-jquery/lib/jasmine-jquery.js'
           ],
-          specs: 'test/*.spec.js'
+          specs: 'build/tests.js',
+          outfile: 'build/testRunner.html'
         }
       }
     },
@@ -63,11 +84,34 @@ module.exports = function(grunt) {
           base: 'source',
         }
       }
+    },
+
+    clean: {
+      build: 'build'
+    },
+
+    copy: {
+      templates: {
+        files: [
+          {
+            expand: true,
+            cwd: 'test/fixture',
+            src: ['*.html'],
+            dest: 'build/'
+          }
+        ]
+      }
     }
   });
 
   // Register the default tasks.
   grunt.registerTask('serve', ['connect', 'watch']);
 
-  grunt.registerTask('test', ['newer:jshint:tests', 'newer:jshint:source', 'jasmine']);
+  grunt.registerTask('test', [
+    'clean:build',
+    'copy:templates',
+    'jshint',
+    'browserify',
+    'jasmine'
+  ]);
 };

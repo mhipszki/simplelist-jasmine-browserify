@@ -1,41 +1,31 @@
 'use strict';
 
-jasmine.getFixtures().fixturesPath = 'test/fixture';
+var Template = require('./fixture/template');
 
 describe('simple list app', function() {
 
-  var container;
-  var input;
-  var addButton;
-  var itemList;
-  var itemCount;
+  var template;
 
   beforeEach(function() {
-    loadFixtures('container.html');
-
-    container = $('#container');
-    input = $('#item-name');
-    addButton = $('#add-button');
-    itemList = $('#item-list');
-    itemCount = $('#item-count');
+    template = new Template();
   });
 
   describe('when the user first opens the page', function () {
 
     it('should show an empty input field', function() {
-      expect(input).toBeEmpty();
+      expect(template.input).toBeEmpty();
     });
 
     it('should show an Add button', function() {
-      expect(addButton).toExist();
+      expect(template.addButton).toExist();
     });
 
     it('should show no items in the list', function() {
-      expect(itemList).toBeEmpty();
+      expect(template.itemList).toBeEmpty();
     });
 
     it('should show zero as the number of items added', function() {
-      expect(itemCount).toHaveText('No items in list');
+      expect(template.itemCount).toHaveText('No items in list');
     });
 
   });
