@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   var files = {
     source: 'source/*.js',
     tests: 'test/*.spec.js',
+    fixtures: 'test/fixture/*.html',
     grunt: 'Gruntfile.js'
   };
 
@@ -23,7 +24,7 @@ module.exports = function(grunt) {
         tasks: ['test']
       },
       tests: {
-        files: [files.tests],
+        files: [files.tests, files.fixtures],
         tasks: ['test']
       },
       grunt: {
