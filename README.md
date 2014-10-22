@@ -10,10 +10,10 @@ This project is intended to show developing a simple dynamic list feature using 
 
 ##Constraints
 
-* Use of observer pattern (or similar).
-* Counting of DOM elements to find out the number of items in the list isn’t acceptable. Information relating to the current list should be stored in a JS object or local storage, for example.
+* Use of **observer pattern** (or similar).
+* **Counting** of DOM elements to find out the number of items in the list isn’t acceptable. Information relating to the current list should be stored in a JS object or local storage, for example.
 * Browser support is latest Chrome or Firefox.
-* Use native JS DOM over libraries where possible and practical.
+* Use **native JS DOM** over libraries where possible and practical.
 * No full MVC libraries to be used (e.g. backbone, knockout)
 * CSS and JavaScript must be external files.
 
