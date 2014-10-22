@@ -25,3 +25,53 @@ This project is intended to show developing a simple dynamic list feature using 
 * JSHint (linting Javascript code)
 * Grunt (automated tasks to aid development)
 
+##User stories
+
+###Adding new items to the list
+
+####Story
+
+> As a User I can enter the name of a new Item and click on the Add button so that the Item will be appended to the list of Items.
+
+####Acceptance criteria
+
+#####Scenario #1
+
+GIVEN I am a User
+
+WHEN I open the page
+
+THEN I see an empty input field with an Add button
+
+AND I see "No items in list" under the form
+
+
+#####Scenario #2
+
+GIVEN I am a User
+
+WHEN I enter the name of a new Item in the input field
+
+AND I click on the Add button
+
+THEN the Item is added to the end of the list along with a Delete button
+
+AND the text below the list shows the length of the list
+
+###Deleting items from the list
+
+####Story
+
+> As a User I can delete Items from the list so that I can keep only the important items in there
+
+####Acceptance criteria
+
+#####Scenario #1
+
+GIVEN I am User
+WHEN I see the list of Items
+AND there is at least one Item in the list
+AND I click on the Delete button belonging to an Item
+THEN the Item is removed from the list
+AND the text below the list shows the new length of the list
+
