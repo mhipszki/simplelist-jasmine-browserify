@@ -1,17 +1,18 @@
 'use strict';
 
+jasmine.getFixtures().fixturesPath = 'test/fixture';
+
 describe('simple list app', function () {
 
-  var elem;
+  var container;
 
   beforeEach(function() {
-    jasmine.getFixtures().fixturesPath = 'test/fixture';
     loadFixtures('container.html');
-    elem = $('#container');
+    container = $('#container');
   });
 
   it('should have a container element', function() {
-    expect(elem).toHaveId('container');
+    expect(container).toHaveId('container');
   });
 
 });
