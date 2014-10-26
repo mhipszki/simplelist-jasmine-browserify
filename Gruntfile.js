@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   var files = {
     source: 'source/*.js',
     tests: 'test/**/*.js',
-    templates: 'test/fixture/*.html',
+    html: 'source/index.html',
     grunt: 'Gruntfile.js'
   };
 
@@ -27,9 +27,9 @@ module.exports = function(grunt) {
         files: [files.tests],
         tasks: ['newer:jshint:tests', 'browserify', 'jasmine']
       },
-      templates: {
-        files: [files.templates],
-        tasks: ['copy:templates', 'jasmine']
+      html: {
+        files: [files.html],
+        tasks: ['copy:html', 'jasmine']
       },
       grunt: {
         files: [files.grunt],
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8000,
-          base: 'source',
+          base: 'build',
         }
       }
     },
@@ -87,12 +87,12 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      templates: {
+      html: {
         files: [
           {
             expand: true,
-            cwd: 'test/fixture',
-            src: ['*.html'],
+            cwd: 'source',
+            src: ['index.html'],
             dest: 'build/'
           }
         ]
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:build',
-    'copy:templates',
+    'copy:html',
     'jshint',
     'browserify',
     'jasmine'
