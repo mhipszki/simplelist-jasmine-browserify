@@ -69,9 +69,35 @@ AND the text below the list shows the length of the list
 #####Scenario #1
 
 GIVEN I am User
+
 WHEN I see the list of Items
+
 AND there is at least one Item in the list
+
 AND I click on the Delete button belonging to an Item
+
 THEN the Item is removed from the list
+
 AND the text below the list shows the new length of the list
+
+##Architecture
+
+According to the *Observable design pattern* in this example:
+
+**item list** is the *Observable / Subject*
+**list counter** is the *Observer*
+
+The *list counter* should be notified when the *list* changes. We trigger the change by adding / removing an item from the list.
+
+###Adding a new item
+
+The *Add button* should be bound to a method of the *list* to add a new item, and as a result the *list* should store the new item, adds the new item to the DOM and notify the *list counter* to update its text with the changed number of the items.
+
+###Deleting an item
+
+When a new item is added to the list, its *Delete button* should be bound to a method of the *list* to be able to remove itself from the list when the button is clicked. The same process should happen after removing the item: altering the DOM and notifying the *list counter*.
+
+
+
+
 
