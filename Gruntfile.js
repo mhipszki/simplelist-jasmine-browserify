@@ -67,10 +67,6 @@ module.exports = function(grunt) {
         src: 'build/source.js',
         options: {
           keepRunner: true,
-          vendor: [
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/jasmine-jquery/lib/jasmine-jquery.js'
-          ],
           specs: 'build/tests.js',
           outfile: 'build/testRunner.html'
         }
