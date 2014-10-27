@@ -20,6 +20,7 @@ This project is intended to show developing a simple dynamic list feature using 
 ##Used tools
 
 * Jasmine (writing BDD tests)
+* Browserify (modularize code in CommonJS format)
 * PhantomJS (headless browser to run Jasmine unit tests)
 * JSHint (linting Javascript code)
 * Grunt (automated tasks to aid development)
@@ -33,6 +34,14 @@ $ npm install
 ```
 
 to install necessary modules.
+
+###Browserify
+
+Browserify is an imporant piece of the project. Source and test code is organized into CommonJS modules as they are when we're writing Node.js apps on the back-end side.
+
+Browserify helps to wrap all the separate modules to a single *bundle* which can be loaded to the browser without exposing anything to the global scope.
+
+NOTE: The *source/index.html* refers to a file called *source.js* which is created by Browserify when the project is built, under the *build* folder, where the *index.html* is copied over as well. The compiled project is being served from the *build* folder instead of the *source* folder.
 
 ###Development
 
