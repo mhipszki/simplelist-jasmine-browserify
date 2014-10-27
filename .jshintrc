@@ -35,8 +35,6 @@
   "predef": [
     "require",
     "jasmine",
-    "loadFixtures",
-    "$",
     "expect",
     "describe",
     "ddescribe",
