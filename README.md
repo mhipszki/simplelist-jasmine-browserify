@@ -97,7 +97,15 @@ The *Add button* should be bound to a method of the *list* to add a new item, an
 
 When a new item is added to the list, its *Delete button* should be bound to a method of the *list* to be able to remove itself from the list when the button is clicked. The same process should happen after removing the item: altering the DOM and notifying the *list counter*.
 
+###List
 
+Serves the purpose to create the DOM elements of the widget and bind them to the Controller.
 
+As the List object is working with DOM element references, any number of Lists can be added to a single HTML page, creating a List instance and attaching it to a DOM element.
 
+###Controller
+
+Stores data and contains application logic, uses the Observable object to notify observers when the stored data has been changed.
+
+DOM manipulation is completely decoupled from the Controller's logic.
 

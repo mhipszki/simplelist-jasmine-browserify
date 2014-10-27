@@ -2,13 +2,9 @@
 
 var List = require('../source/list');
 
-function getBy(id) {
-  return document.getElementById(id);
-}
-
 function createParent() {
   var id = 'test-widget';
-  var element = getBy(id);
+  var element = document.getElementById(id);
 
   if (!element) {
     element = document.createElement('div');
