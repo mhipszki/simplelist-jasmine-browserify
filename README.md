@@ -44,6 +44,12 @@ to install necessary modules.
 
 `grunt build` lints and compiles the source, then serves the production code on `localhost:8000`
 
+##Possible enhancements
+
+* factor out the DOM elements' creation from List module
+* bind the Add and Delete buttons' onclick to the List's context, getting rid of the closures, which would result in cleaner, more comprehensive code
+* add more tests to check if more list on the same page behaves properly (they actually do, but there are no automated tests for that)
+
 ##User stories
 
 ###Adding new items to the list
