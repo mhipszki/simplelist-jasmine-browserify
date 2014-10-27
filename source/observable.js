@@ -1,5 +1,12 @@
 'use strict';
 
+/*
+NOTE: Observable is a simple implementation of the Observer pattern
+      * it registers observers and
+      * notifies them through their exposed Update() method
+        with a given context
+*/
+
 function Observable() {
   this.observers = [];
 }
