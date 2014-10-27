@@ -102,7 +102,7 @@ module.exports = function(grunt) {
     'clean:build',
     'copy:html',
     'jshint',
-    'browserify',
+    'browserify:source',
     'connect:server:keepalive'
   ]);
 
