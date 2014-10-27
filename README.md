@@ -20,10 +20,29 @@ This project is intended to show developing a simple dynamic list feature using 
 ##Used tools
 
 * Jasmine (writing BDD tests)
-* jasmine-jquery (helping DOM access in unit tests)
 * PhantomJS (headless browser to run Jasmine unit tests)
 * JSHint (linting Javascript code)
 * Grunt (automated tasks to aid development)
+
+##Howto install and run
+
+Npm modules are ignored from source control, run
+
+```
+$ npm install
+```
+
+to install necessary modules.
+
+###Development
+
+`grunt serve` will serve the compiled project files from under `build` folder on `localhost:8000` and watch for file changes. Anytime a JS or html file changes it will lint JS code, run `browserify` producing a new build and runs the `Jasmine` test suite.
+
+`grunt test` lints, compiles and tests the project.
+
+###Production
+
+`grunt build` lints and compiles the source, then serves the production code on `localhost:8000`
 
 ##User stories
 
