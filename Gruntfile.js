@@ -21,11 +21,11 @@ module.exports = function(grunt) {
     watch: {
       source: {
         files: [files.source],
-        tasks: ['newer:jshint:source', 'browserify', 'jasmine']
+        tasks: ['newer:jshint:source', 'browserify:tests', 'jasmine']
       },
       tests: {
         files: [files.tests],
-        tasks: ['newer:jshint:tests', 'browserify', 'jasmine']
+        tasks: ['newer:jshint:tests', 'browserify:tests', 'jasmine']
       },
       html: {
         files: [files.html],
@@ -54,17 +54,12 @@ module.exports = function(grunt) {
       },
       tests: {
         src: ['test/*.spec.js'],
-        dest: 'build/tests.js',
-        options: {
-          external: ['./source/app.js'],
-          debug: true
-        }
+        dest: 'build/tests.js'
       }
     },
 
     jasmine: {
       test: {
-        src: 'build/source.js',
         options: {
           keepRunner: true,
           specs: 'build/tests.js',
@@ -102,6 +97,14 @@ module.exports = function(grunt) {
 
   // Register the default tasks.
   grunt.registerTask('serve', ['connect', 'watch']);
+
+  grunt.registerTask('build', [
+    'clean:build',
+    'copy:html',
+    'jshint',
+    'browserify',
+    'connect:server:keepalive'
+  ]);
 
   grunt.registerTask('test', [
     'clean:build',
