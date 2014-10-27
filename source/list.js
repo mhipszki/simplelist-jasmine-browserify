@@ -17,7 +17,7 @@ function List() {
   widget.appendChild(itemList);
   widget.appendChild(itemCount);
 
-  var controller = new Controller(itemList);
+  var controller = new Controller();
   controller.addObserver(itemCount);
 
   addButton.onclick = function() {
